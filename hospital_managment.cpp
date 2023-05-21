@@ -1,6 +1,7 @@
 #include<iostream>
 #include<cstdlib>
 #include<ctime>
+#include<string>
 using namespace std;
 
 const int ID[10] = {0123, 1234, 2345, 3456, 4567, 5678, 6789, 7890,8901, 9012};
@@ -18,8 +19,7 @@ struct reception//:conditions
     int day;
 
     //variable used in "void new_dr_register()" function
-    string d_f_name;
-    string d_l_name;
+    string d_name;
     int d_phone_number;
     int d_phone_number2;
     char d_address[20];
@@ -29,8 +29,7 @@ struct reception//:conditions
     string job_type;
 
     //variable used in "void patient_register()" function
-    string p_f_name;
-    string p_l_name;
+    string p_name;
     int p_phone_number;
     char p_address[20];
     char p_gender;
@@ -64,10 +63,8 @@ struct reception//:conditions
     
     void new_dr_register()
     {
-        cout<<"Enter First name                 : ";
-        cin>>d_f_name;
-        cout<<"Enter Last name                  : ";
-        cin>>d_l_name;
+        cout<<"Enter Full name                  : ";
+        getline(cin, d_name);
         cout<<"Enter age                        : ";
         cin>>d_age;
         cout<<"Enter gender                     : ";
@@ -87,10 +84,8 @@ struct reception//:conditions
 
     void patient_register()
     {
-        cout<<"Enter First name      :";
-        cin>>p_f_name;
-        cout<<"Enter Last name       :";
-        cin>>p_l_name;
+        cout<<"Enter Full name       : ";
+        getline(cin, p_name);
         cout<<"Enter age             :";
         cin>>p_age;
         cout<<"Enter gender          :";
@@ -105,8 +100,7 @@ struct reception//:conditions
     void doctors_data()
     {
     cout<<"===========================+"<<endl;
-    cout<<" NAME                 :"<<d_f_name<<endl;
-    cout<<" NAME                 :"<<d_l_name<<endl;
+    cout<<" NAME                 :"<<d_name<<endl;
     cout<<" AGE                  :"<<d_age<<endl;
     cout<<" SEX                  :"<<d_gender<<endl;
     cout<<" ID                   :"<<d_id<<endl;
@@ -122,7 +116,7 @@ struct reception//:conditions
     void patients_data()
     {
     cout<<"====================================="<<endl;
-    cout<<" NAMe                 :"<<p_f_name<<endl;
+    cout<<" NAMe                 :"<<p_name<<endl;
     cout<<" AGE                  :"<<p_age<<endl;
     cout<<" SEX                  :"<<p_gender<<endl;
     cout<<" PHONE NUMBER         :"<<p_phone_number<<endl;
@@ -132,7 +126,7 @@ struct reception//:conditions
     cout<<"====================================="<<endl;
     }
 
-    void data_managment()
+    void data_management()
     {
         char actor;
 
@@ -142,6 +136,15 @@ struct reception//:conditions
             doctors_data();
         if(actor == 'p')
             patients_data();
+    }
+
+    void dr_appointment_status()
+    {
+        for(int i;)
+        if(d_appointment_status == "HAVE")
+            cout<<d_name<<" have an appointment\n";
+        else
+            cout<<d_name<<" have not an appointment\n";
     }
 
     // void condition()
@@ -181,14 +184,14 @@ struct doctor
     {
         if(heart_rate > 70 || sugar_level > 160 || sugar_level < 70 || blood_pressure >140/90 || blood_pressure < 90/60)
         {
-            rec.d_appointment_status = "ON WORK\n";  
-            rec.p_appointment_status = "ON WORK\n";
+            rec.d_appointment_status = "HAVE\n";  
+            rec.p_appointment_status = "HAVE\n";
             cout<<"And so you'll have appointment\n";
         }
         else
         {
-            rec.d_appointment_status = "ON WORK\n";  
-            rec.p_appointment_status = "ON WORK\n";
+            rec.d_appointment_status = "NOTHING\n";  
+            rec.p_appointment_status = "NOTHING\n";
         }
     }
 }d;
@@ -200,7 +203,7 @@ struct laboratory
 
     void lab_name()
     {
-     cout<<"Hey "<<rec.p_f_name<<" "<<rec.p_l_name<<" my name is Dr. "<<rec.d_f_name<<" "<< rec.d_l_name<<". I'm ur doctor now."<<endl;
+     cout<<"Hey "<<rec.p_name<<" my name is Dr. "<<rec.d_name<<". I'm ur doctor now."<<endl;
     }
     
     void lab_function()
@@ -212,7 +215,55 @@ struct laboratory
         
 int main()
 {
-    r.date();
-    r.new_dr_register();
-    r.data_managment();
+    char log_exit;
+
+    cout<<"+==============================================================+"<<endl;
+    cout<<"+                          WELCOME                             +"<<endl;
+    cout<<"+                         RECEPTION                            +"<<endl;
+    cout<<"+       1. LOGIN                                               +"<<endl;
+    cout<<"+       2. EXIT                                                +"<<endl;
+    cout<<"+                                                              +"<<endl;
+    cout<<"+==============================================================+"<<endl;
+    // cout<<"+==============================================================+"<<endl;
+    // cout<<"+==============================================================+"<<endl;
+    // cout<<"+==============================================================+"<<endl;
+    cin>>log_exit;
+    if(log_exit == '1')
+    {
+        //To enter day
+        r.date();
+
+        char Choose;
+
+        cout<<"+==============================================================+"<<endl;
+        cout<<"+                         RECEPTION                            +"<<endl;
+        cout<<"+                                                              +"<<endl;
+        cout<<"+       1. PATIENT REGISTER                                    +"<<endl;
+        cout<<"+       2. DOCTOR REGISTER                                     +"<<endl;
+        cout<<"+       3. APPOINTMENT STATUS                                  +"<<endl;
+        cout<<"+       4. DATA MANAGEMENT                                     +"<<endl;
+        cout<<"+                                                              +"<<endl;
+        cout<<"+==============================================================+"<<endl;
+
+        cin>>Choose;
+        if (Choose == '1')
+        {
+            r.patient_register();
+        }
+        else if (Choose == '2')
+        {
+            r.new_dr_register();
+        }
+        else if (Choose == '3')
+        {
+            r.
+        }
+        else if (Choose == '2')
+        {
+            r.data_management();
+        }
+    }
+
+
+
 }
