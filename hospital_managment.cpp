@@ -140,7 +140,7 @@ struct reception//:conditions
 
     void dr_appointment_status()
     {
-        for(int i;)
+        // for(int i;)
         if(d_appointment_status == "HAVE")
             cout<<d_name<<" have an appointment\n";
         else
@@ -164,7 +164,7 @@ struct doctor
 
     void dr_name()
     {
-     cout<<"Hey "<<rec.p_f_name<<" "<<rec.p_l_name<<" my name is Dr. "<<rec.d_f_name<<" "<< rec.d_l_name<<". I'm ur doctor now."<<endl;
+     cout<<"Hey "<<rec.p_name<<" my name is Dr. "<<rec.d_name<<". I'm ur doctor now."<<endl;
     }
 
     void dr_command1()
@@ -235,6 +235,7 @@ int main()
 
         char Choose;
 
+ln_rec:
         cout<<"+==============================================================+"<<endl;
         cout<<"+                         RECEPTION                            +"<<endl;
         cout<<"+                                                              +"<<endl;
@@ -248,16 +249,26 @@ int main()
         cin>>Choose;
         if (Choose == '1')
         {
+            line252:
             r.patient_register();
+            char again;
+            cout<<"Enter 1 to register another patient or 0 to goto reception\n";
+            cin>>again;
+            if(again == '1')
+                goto line252;
+            else if(again == '0')
+                goto ln_rec;
+            else
+                cout<<"Wrong input try again\n";
         }
         else if (Choose == '2')
         {
             r.new_dr_register();
         }
-        else if (Choose == '3')
-        {
-            r.
-        }
+        // else if (Choose == '3')
+        // {
+        //     r.
+        // }
         else if (Choose == '2')
         {
             r.data_management();
