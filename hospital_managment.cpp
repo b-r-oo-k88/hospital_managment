@@ -4,9 +4,22 @@
 #include<string>
 using namespace std;
 
-const int ID[10] = {0123, 1234, 2345, 3456, 4567, 5678, 6789, 7890,8901, 9012};
-const int PRICE[10] = {5000, 5000, 5000, 6000, 6000, 6000, 7000, 7000, 7000, 7000};
-const string BLOOD_TYPE[8] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+ string Doc_name[10] = {"Julien Bieber", "Elias Kefale", "Werku Adinew", "Hewan Seifu", "Surafel Jr"};
+ string Job_type[10] = {"Doctor", "Laboratorist", "Doctor", "Laboratorial", "Doctor"};
+ string Doc_gender[10] = {"M", "M", "M", "F", "M"};
+ string Doc_address[10] = {"Piyasa", "Megenagna", "Mexico", "Mexico", "Bole"};
+ int Doc_age[10] = {30, 32, 38, 26, 29};
+ int ID[10] = {0123, 1234, 2345, 3456, 4567, 5678, 6789, 7890,8901, 9012};
+ int PRICE[10] = {5000, 5000, 5000, 6000, 6000, 6000, 7000, 7000, 7000, 7000};
+ long long int Doc_phone[10] = {912121212, 913131313, 914141414 , 915151515, 916161616};
+
+ string Pat_name[10] = {"Julien Bieber", "Elias Kefale", "Werku Adinew", "Hewan Seifu", "Surafel Jr"};
+ int Pat_age[10] = {16, 22, 69, 45, 11};
+ string Pat_address[10] = {"Jemo", "Megenagna", "Summit", "Goro", "Arabsa"};
+ string Pat_gender[10] = {"F", "F", "M", "M", "M"};
+ string BLOOD_TYPE[] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
+ long long int Pat_phone[10] = {911111111, 910101010, 911114444 , 915155555, 911116666};
+
 // const string JOB_TYPE[2] = {"Doctor", "Laboratorial"};
 
 struct conditions{
@@ -19,31 +32,32 @@ struct reception//:conditions
     int day;
 
     //variable used in "void new_dr_register()" function
-    string d_name;
-    int d_phone_number;
-    int d_phone_number2;
+    string d_name[10];
+    int d_phone_number[10];
+    int d_phone_number2[10];
     char d_address[20];
     char d_official_id[20];
-    char d_gender;
-    int d_age;
-    string job_type;
+    char d_gender[10];
+    int d_age[10];
+    string job_type[10];
+    
 
     //variable used in "void patient_register()" function
-    string p_name;
-    int p_phone_number;
-    char p_address[20];
-    char p_gender;
-    int p_age;
+    string p_name[10];
+    int p_phone_number[10];
+    string p_address[10];
+    char p_gender[10];
+    int p_age[10];
 
     //variable used in "void doctors_data()" function
-    int d_id;
-    string d_job_status;
-    string d_appointment_status;
-    int d_price;
+    int d_id[10];
+    string d_job_status[10];
+    string d_appointment_status[10];
+    int d_price[10];
 
     //variable used in "void patients_data()" function
-    char blood_type[2];
-    string p_appointment_status;
+    string blood_type[8];
+    string p_appointment_status[10];
     
 
     void date()
@@ -63,67 +77,95 @@ struct reception//:conditions
     
     void new_dr_register()
     {
-        cout<<"Enter Full name                  : ";
-        getline(cin, d_name);
-        cout<<"Enter age                        : ";
-        cin>>d_age;
-        cout<<"Enter gender                     : ";
-        cin>>d_gender;
-        cout<<"Enter Phone number               : ";
-        cin>>d_phone_number;
-        cout<<"Enter Second Phone number        : ";
-        cin>>d_phone_number2; 
-        cout<<"Enter your address               : ";
-        cin>>d_address;
-        cout<<"Enter official id or kebele id   : ";
-        cin>>d_official_id;
-        cout<<"Enter Job type                   : ";
-        cin>>job_type;
-        cout<<endl;
+        //'i' to be static 
+        static int i;
+        //for inputting doctor information starting from array of index 5
+        for(i = 5; i < 10; i++)
+        {
+            cout<<"Enter Full name                  : ";
+            // cin.get(d_name, 100);
+            cin>>d_name[5];
+            cout<<"Enter age                        : ";
+            cin>>d_age[5];
+            cout<<"Enter gender                     : ";
+            cin>>d_gender[5];
+            cout<<"Enter Phone number               : ";
+            cin>>d_phone_number[5];
+            cout<<"Enter Second Phone number        : ";
+            cin>>d_phone_number2[5]; 
+            cout<<"Enter your address               : ";
+            cin>>d_address[5];
+            cout<<"Enter official id or kebele id   : ";
+            cin>>d_official_id[5];
+            cout<<"Enter Job type                   : ";
+            cin>>job_type[5];
+            cout<<endl;
+            break;
+        }
     }
 
     void patient_register()
     {
-        cout<<"Enter Full name       : ";
-        getline(cin, p_name);
-        cout<<"Enter age             :";
-        cin>>p_age;
-        cout<<"Enter gender          :";
-        cin>>p_gender;
-        cout<<"Enter Phone number    :";
-        cin>>p_phone_number;
-        cout<<"Enter your address    :";
-        cin>>p_address;
-        cout<<endl;
+        //'i' to be static 
+        static int i;
+        //for inputting patient information starting from array of index 5
+        for(i = 5; i < 10; i++)
+        {
+            cout<<"Enter Full name       : ";
+            getline(cin, p_name[5]);
+            cout<<"Enter age             :";
+            cin>>p_age[5];
+            cout<<"Enter gender          :";
+            cin>>p_gender[5];
+            cout<<"Enter Phone number    :";
+            cin>>p_phone_number[5];
+            cout<<"Enter your address    :";
+            cin>>p_address[5];
+            cout<<endl;
+            break;
+        }
     }
 
     void doctors_data()
     {
-    cout<<"===========================+"<<endl;
-    cout<<" NAME                 :"<<d_name<<endl;
-    cout<<" AGE                  :"<<d_age<<endl;
-    cout<<" SEX                  :"<<d_gender<<endl;
-    cout<<" ID                   :"<<d_id<<endl;
-    cout<<" JOB TYPE             :"<<job_type<<endl;
-    cout<<" JOB STATUS           :"<<d_job_status<<endl;
-    cout<<" PHONE NUMBER         :"<<d_phone_number<<endl;
-    cout<<" APPOINTMENT STATUS   :"<<d_appointment_status<<endl;
-    cout<<" PRICE                :"<<d_price<<endl;
-    cout<<" PRICE RELEASED DAY   :"<<day<<endl;
-    cout<<"==========================="<<endl;
+        //
+        cout<<"===========================+"<<endl;
+        srand(time(NULL));
+        int index = rand() % 5;
+        cout<<" NAME                 :"<<d_name[index]<<endl;
+        cout<<" AGE                  :"<<d_age[index]<<endl;
+        cout<<" SEX                  :"<<d_gender[index]<<endl;
+        cout<<" ID                   :"<<d_id[index]<<endl;
+        //something for display job status
+        cout<<" JOB STATUS           :"<<d_job_status<<endl;
+        cout<<" PHONE NUMBER         :"<<d_phone_number[index]<<endl;
+        //something condition for displaying appointment status
+        cout<<" APPOINTMENT STATUS   :"<<d_appointment_status<<endl;
+        srand(time(NULL));
+        int price = rand() % 10;
+        d_price[0] = PRICE[price];
+        cout<<" PRICE                :"<<d_price[0]<<endl;
+        cout<<" PRICE RELEASED DAY   :"<<day<<endl;
+        cout<<"==========================="<<endl;
     }
 
     void patients_data()
     {
-    cout<<"====================================="<<endl;
-    cout<<" NAMe                 :"<<p_name<<endl;
-    cout<<" AGE                  :"<<p_age<<endl;
-    cout<<" SEX                  :"<<p_gender<<endl;
-    cout<<" PHONE NUMBER         :"<<p_phone_number<<endl;
-    cout<<" BLOOD TYPE           :"<<blood_type<<endl;
-    cout<<" APPOINTMENT STATUS   :"<<p_appointment_status<<endl;
-    cout<<" ADDRESS              :"<<p_address<<endl;
-    cout<<"====================================="<<endl;
+        cout<<"==============================================="<<endl;
+        srand(time(NULL));
+        int index = rand() % 5;
+        cout<<" NAMe                 :"<<p_name[index]<<endl;
+        cout<<" AGE                  :"<<p_age[index]<<endl;
+        cout<<" SEX                  :"<<p_gender[index]<<endl;
+        cout<<" PHONE NUMBER         :"<<p_phone_number[index]<<endl;
+        srand(time(NULL));
+        int random_b_t = rand() % 8;
+        blood_type[0] = BLOOD_TYPE[random_b_t];
+        cout<<" BLOOD TYPE           :"<<blood_type[0]<<endl;
+        //some condition for displaying patient appointment status
+        cout<<" APPOINTMENT STATUS   :"<<p_appointment_status<<endl;
+        cout<<" ADDRESS              :"<<p_address[index]<<endl;
+        cout<<"================================================"<<endl;
     }
 
     void data_management()
@@ -141,10 +183,10 @@ struct reception//:conditions
     void dr_appointment_status()
     {
         // for(int i;)
-        if(d_appointment_status == "HAVE")
-            cout<<d_name<<" have an appointment\n";
+        if(d_appointment_status[0] == "HAVE")
+            cout<<d_name[0]<<" have an appointment\n";
         else
-            cout<<d_name<<" have not an appointment\n";
+            cout<<d_name[0]<<" have not an appointment\n";
     }
 
     // void condition()
@@ -164,7 +206,11 @@ struct doctor
 
     void dr_name()
     {
-     cout<<"Hey "<<rec.p_name<<" my name is Dr. "<<rec.d_name<<". I'm ur doctor now."<<endl;
+        //some statement to check the doctor is free
+
+        srand(time(NULL));
+        int index = rand() % 5;
+        cout<<"Hey "<<rec.p_name[index]<<" my name is Dr. "<<rec.d_name[index]<<". I'm ur doctor now."<<endl;
     }
 
     void dr_command1()
@@ -184,14 +230,18 @@ struct doctor
     {
         if(heart_rate > 70 || sugar_level > 160 || sugar_level < 70 || blood_pressure >140/90 || blood_pressure < 90/60)
         {
-            rec.d_appointment_status = "HAVE\n";  
-            rec.p_appointment_status = "HAVE\n";
+            srand(time(NULL));
+            int index = rand() % 10;
+            rec.d_appointment_status[index] = "HAVE\n";  
+            rec.p_appointment_status[index] = "HAVE\n";
             cout<<"And so you'll have appointment\n";
         }
         else
         {
-            rec.d_appointment_status = "NOTHING\n";  
-            rec.p_appointment_status = "NOTHING\n";
+            srand(time(NULL));
+            int index = rand() % 10;
+            rec.d_appointment_status[index] = "NOTHING\n";  
+            rec.p_appointment_status[index] = "NOTHING\n";
         }
     }
 }d;
@@ -224,9 +274,7 @@ int main()
     cout<<"+       2. EXIT                                                +"<<endl;
     cout<<"+                                                              +"<<endl;
     cout<<"+==============================================================+"<<endl;
-    // cout<<"+==============================================================+"<<endl;
-    // cout<<"+==============================================================+"<<endl;
-    // cout<<"+==============================================================+"<<endl;
+    
     cin>>log_exit;
     if(log_exit == '1')
     {
@@ -243,6 +291,7 @@ ln_rec:
         cout<<"+       2. DOCTOR REGISTER                                     +"<<endl;
         cout<<"+       3. APPOINTMENT STATUS                                  +"<<endl;
         cout<<"+       4. DATA MANAGEMENT                                     +"<<endl;
+        cout<<"+       5. EXIT PROGRAM                                        +"<<endl;
         cout<<"+                                                              +"<<endl;
         cout<<"+==============================================================+"<<endl;
 
@@ -253,28 +302,54 @@ ln_rec:
             r.patient_register();
             char again;
             cout<<"Enter 1 to register another patient or 0 to goto reception\n";
+            ln_in:
             cin>>again;
             if(again == '1')
                 goto line252;
             else if(again == '0')
                 goto ln_rec;
-            else
+            else{
                 cout<<"Wrong input try again\n";
+                goto ln_in; 
+                }
         }
         else if (Choose == '2')
         {
+            line272:
             r.new_dr_register();
+            char again;
+            cout<<"Enter 1 to register another doctor or 0 to goto reception\n";
+            ln_inn:
+            cin>>again;
+            if(again == '1')
+                goto line272;
+            else if(again == '0')
+                goto ln_rec;
+            else{
+                cout<<"Wrong input try again\n";
+                goto ln_inn; 
+                }
         }
         // else if (Choose == '3')
         // {
         //     r.
         // }
-        else if (Choose == '2')
+        else if (Choose == '4')
         {
+            line292:
             r.data_management();
+            char again;
+            cout<<"Enter 1 to look again or 0 to goto reception\n";
+            ln_innn:
+            cin>>again;
+            if(again == '1')
+                goto line292;
+            else if(again == '0')
+                goto ln_rec;
+            else{
+                cout<<"Wrong input try again\n";
+                goto ln_innn; 
+                }
         }
     }
-
-
-
 }
